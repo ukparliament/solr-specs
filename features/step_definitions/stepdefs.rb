@@ -1,11 +1,18 @@
+module FridayStepHelper
+  def is_it_friday(day)
+  end
+end
+World FridayStepHelper
+
 Given("today is Sunday") do
-  pending # Write code here that turns the phrase above into concrete actions
+  @today = 'Sunday'
+  
 end
 
 When("I ask whether it's Friday yet") do
-  pending # Write code here that turns the phrase above into concrete actions
+  @actual_answer = is_it_friday(@today)
 end
 
-Then("I should be told {string}") do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+Then("I should be told {string}") do |expected_answer|
+  expect(@actual_answer).to eq(expected_answer)
 end
