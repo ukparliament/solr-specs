@@ -1,5 +1,6 @@
 module FridayStepHelper
   def is_it_friday(day)
+    'Nope'
   end
 end
 World FridayStepHelper
