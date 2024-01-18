@@ -18,4 +18,5 @@ Feature: Solr API expectations
         | rows  | 7         |
     Then the HTTP response should be 200
     And the response should have seven rows
-    And the reponse should contain the search term
+    And the reponse should contain the search term "farming"
+
