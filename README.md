@@ -1,13 +1,13 @@
 # solr-specs
 
-bundle
+`bundle`
 
-cucumber --help
+`cucumber --help`
 
-cucumber --init
+`cucumber --init`
 
-cucumber --profile html_report
+`cucumber --profile html_report`
 
-cucumber KEY=0123456789
+`cucumber KEY=0123456789`
 
-ENV["KEY"]
+`ENV["KEY"]`
