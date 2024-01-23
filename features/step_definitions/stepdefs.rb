@@ -1,27 +1,21 @@
-module FridayStepHelper
-  def is_it_friday(day)
-    'Nope'
-  end
-end
-World FridayStepHelper
+require 'net/http'
 
-Given("today is Sunday") do
-  @today = 'Sunday'
+Given( 'I can connect to the web' ) do
   
+  # We use the ability to connect to Google as a proxy for the ability to connect to the web.
+  url = 'https://www.google.com'
+  
+  # We get the response from Google.
+  response = Net::HTTP.get_response( URI.parse( url ) )
+  
+  # We check the response code is 200.
+  expect(response.code).to eq '200'
 end
 
-When("I ask whether it's Friday yet") do
-  @actual_answer = is_it_friday(@today)
-end
-
-Then("I should be told {string}") do |expected_answer|
-  expect(@actual_answer).to eq(expected_answer)
-end
 
 
-Given('I can connect to the web') do
-  pending # Write code here that turns the phrase above into concrete actions
-end
+
+
 
 When('I send a request for the Prod Solr API home page') do
   pending # Write code here that turns the phrase above into concrete actions
