@@ -9,10 +9,10 @@ Given( 'I can connect to the web' ) do
   response = Net::HTTP.get_response( URI.parse( url ) )
   
   # We check the response code is 200.
-  expect(response.code).to eq '200'
+  expect( response.code ).to eq '200'
 end
 
-When('I send a request for the Prod Solr API home page') do
+When( 'I send a request for the Prod Solr API home page' ) do
   
   # We set the URL for Production Solr.
   url = 'https://api.parliament.uk/solr'
@@ -21,27 +21,33 @@ When('I send a request for the Prod Solr API home page') do
   @response = Net::HTTP.get_response( URI.parse( url ) )
 end
 
-Then('I should get an HTTP response {string}') do |string|
+Then( 'the Prod Solr API should return an HTTP response of {string}' ) do |string|
   
   # We check the response code is 401.
-  expect(@response.code).to eq string
+  expect( @response.code ).to eq string
+end
+
+When( 'I send a request for the Test Solr API home page' ) do
   
+  # We set the URL for Test Solr.
+  url = 'https://api.parliament.uk/new-solr'
   
+  # We get the response from Test Solr.
+  @response = Net::HTTP.get_response( URI.parse( url ) )
+end
+
+Then( 'the Test Solr API should return an HTTP response of {string}' ) do |string|
   
+  # We check the response code is 401.
+  expect( @response.code ).to eq string
 end
 
 
 
 
+# ### Written to here ###
 
 
-
-
-
-
-When('I send a request for the Test Solr API home page') do
-  pending # Write code here that turns the phrase above into concrete actions
-end
 
 Given('the Prod Solr API is running') do
   pending # Write code here that turns the phrase above into concrete actions
