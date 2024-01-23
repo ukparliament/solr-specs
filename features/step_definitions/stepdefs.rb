@@ -12,19 +12,32 @@ Given( 'I can connect to the web' ) do
   expect(response.code).to eq '200'
 end
 
-
-
-
-
-
 When('I send a request for the Prod Solr API home page') do
-  pending # Write code here that turns the phrase above into concrete actions
+  
+  # We set the URL for Production Solr.
+  url = 'https://api.parliament.uk/solr'
+  
+  # We get the response from Production Solr.
+  @response = Net::HTTP.get_response( URI.parse( url ) )
 end
 
-Then('I should get an HTTP response {int}') do |int|
-# Then('I should get an HTTP response {float}') do |float|
-  pending # Write code here that turns the phrase above into concrete actions
+Then('I should get an HTTP response {string}') do |string|
+  
+  # We check the response code is 401.
+  expect(@response.code).to eq string
+  
+  
+  
 end
+
+
+
+
+
+
+
+
+
 
 When('I send a request for the Test Solr API home page') do
   pending # Write code here that turns the phrase above into concrete actions
