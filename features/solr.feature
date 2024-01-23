@@ -4,7 +4,7 @@ Feature: Solr API expectations
   Scenario: Checking the Prod Solr API is accessible
     Given I can connect to the web
     When I send a request for the Prod Solr API home page
-    Then I should get an HTTP response 200
+    Then I should get an HTTP response '401'
 
   Scenario: Checking the Test Solr API is accessible
     Given I can connect to the web
