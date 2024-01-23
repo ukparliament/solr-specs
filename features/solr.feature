@@ -4,12 +4,12 @@ Feature: Solr API expectations
   Scenario: Checking the Prod Solr API is accessible
     Given I can connect to the web
     When I send a request for the Prod Solr API home page
-    Then I should get an HTTP response '401'
+    Then the Prod Solr API should return an HTTP response of '401'
 
   Scenario: Checking the Test Solr API is accessible
     Given I can connect to the web
     When I send a request for the Test Solr API home page
-    Then I should get an HTTP response 200
+    Then the Test Solr API should return an HTTP response of '401'
 
   Scenario: Checking the Prod Solr API is giving results
     Given the Prod Solr API is running
@@ -18,5 +18,5 @@ Feature: Solr API expectations
         | rows  | 7         |
     Then the HTTP response should be 200
     And the response should have seven rows
-    And the reponse should contain the search term "farming"
+    And the response should contain the search term "farming"
 
