@@ -49,13 +49,42 @@ end
 
 
 
-Given('the Prod Solr API is running') do
-  pending # Write code here that turns the phrase above into concrete actions
-end
 
 When('I send a query to the Prod Solr API with the params:') do |table|
-  # table is a Cucumber::MultilineArgument::DataTable
-  pending # Write code here that turns the phrase above into concrete actions
+  
+  # We get the API key for Production Solr.
+  api_key = ENV['API_KEY']
+  
+  # We extract the query string from the data table.
+  query_string = table.raw[0][1]
+  
+  # We construct the URL for Production Solr.
+  url = "https://api.parliament.uk/solr?q=#{query_string}"
+  
+  # We URIify the URL.
+  uri = URI( url )
+  
+  # We construct the request ...
+  request = Net::HTTP::Get.new( uri )
+  
+  # ... and append the API key.
+  request['Ocp-Apim-Subscription-Key'] = api_key 
+  
+  # We get the response.
+  response = Net::HTTP.start( uri.hostname, uri.port, use_ssl: uri.scheme == 'https' ) { |http|
+    http.request( request )
+  }
+  
+  puts "**********"
+  puts response.code
+  
+  
+  
+
+
+
+
+
 end
 
 Then('the HTTP response should be {int}') do |int|
