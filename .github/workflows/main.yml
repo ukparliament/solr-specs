@@ -1,0 +1,32 @@
+name: Cucumber
+
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  run-specs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: install ruby
+        run: sudo apt-get install ruby-full
+
+      - name: install bundler
+        run: sudo gem install bundler
+
+      - name: install cucumber
+        run: sudo gem install cucumber
+      
+      - name: cucumber --publish-quiet -f html > report.html
+        run: cucumber --publish-quiet -f html > report.html
+
+      - name: ls
+        run: ls
+          
+
+     
