@@ -12,7 +12,6 @@ Feature: Solr API expectations
     Then the Test Solr API should return an HTTP response of '401'
 
   Scenario: Checking the Prod Solr API is giving results
-    Given the Prod Solr API is running
     When I send a query to the Prod Solr API with the params:
         | q     | farming   |
         | rows  | 7         |
