@@ -20,7 +20,7 @@ jobs:
         run: sudo gem install bundler
 
       - name: bundle install
-        run: sudo bundle install
+        run: bundle install
 
       - name: cucumber
         run: cucumber
