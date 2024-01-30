@@ -21,6 +21,9 @@ jobs:
 
       - name: install cucumber
         run: sudo gem install cucumber
+
+      - name: install rspec
+        run: sudo gem install rspec
       
       - name: cucumber
         run: cucumber
