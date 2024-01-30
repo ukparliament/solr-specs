@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4.1.1
+      #- uses: actions/checkout@v4.1.1
 
       - name: install ruby
         run: sudo apt-get install ruby-full
@@ -19,8 +19,8 @@ jobs:
       - name: install bundler
         run: sudo gem install bundler
 
-      - name: bundle update
-        run: bundle update
+      - name: sudo bundle install
+        run: sudo bundle install
 
       - name: cucumber
         run: cucumber
