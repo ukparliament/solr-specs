@@ -22,8 +22,11 @@ jobs:
       - name: install cucumber
         run: sudo gem install cucumber
       
-      - name: cucumber --publish-quiet -f html > report.html
-        run: cucumber --publish-quiet -f html > report.html
+      - name: cucumber
+        run: cucumber
+
+      #- name: cucumber --publish-quiet -f html > report.html
+      #  run: cucumber --publish-quiet -f html > report.html
 
       - name: ls
         run: ls
