@@ -12,8 +12,8 @@ How to generate the HTML report:
 
 Passing an API key on the command line:
 
-`cucumber KEY=0123456789`
+`cucumber API_KEY=0123456789`
 
 Using the passed key in code:
 
-`ENV["KEY"]`
+`ENV["api_key"]`
