@@ -19,8 +19,8 @@ jobs:
       - name: install bundler
         run: sudo gem install bundler
 
-      - name: bundle install
-        run: bundle install
+      - name: bundle update
+        run: bundle update
 
       - name: cucumber
         run: cucumber
