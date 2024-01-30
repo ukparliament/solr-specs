@@ -28,8 +28,6 @@ jobs:
       #- name: cucumber --publish-quiet -f html > report.html
       #  run: cucumber --publish-quiet -f html > report.html
 
-      - name: ls
-        run: ls
           
 
      
