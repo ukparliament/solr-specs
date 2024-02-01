@@ -1,6 +1,6 @@
-html_report: 
+html: 
     --format progress 
     --format html 
-    --out=features_report.html
+    --out=report.html
 default: 
     --publish-quiet

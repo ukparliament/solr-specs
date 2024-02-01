@@ -8,7 +8,7 @@
 
 How to generate the HTML report:
 
-`cucumber --profile html_report`
+`cucumber --profile html`
 
 Passing an API key on the command line:
 
