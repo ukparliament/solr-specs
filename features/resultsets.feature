@@ -35,3 +35,8 @@ Feature: Query resultset expectations
     Then the number of results from the Test API should be 46
     And the number of results from the Prod API should be 39
 
+  Scenario: Comparing results for the query: title:"asylum: housing" session:21/22
+    Given I have typed in the query: title:"asylum: housing" session:21/22
+    When the Solr query is: title_t:"asylum:housing" AND (session_s:2021-22 OR date_dt:[2021-05-11T00:00:00Z TO 2022-04-28T22:59:59Z])
+    Then the number of results from the Test API should be 0
+    And the number of results from the Prod API should be 29
