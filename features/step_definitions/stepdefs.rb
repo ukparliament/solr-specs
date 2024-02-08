@@ -97,6 +97,6 @@ Given(/I have typed in the query: (.*)$/) do |string|
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-When('the Solr query is: (.*)$') do |string|
+When(/the Solr query is: (.*)$/) do |string|
   pending # Write code here that turns the phrase above into concrete actions
 end
