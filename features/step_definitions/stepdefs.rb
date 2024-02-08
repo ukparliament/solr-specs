@@ -93,7 +93,7 @@ Then('the reponse should contain the search term {string}') do |string|
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-Given('I have typed in the query: {string}$') do |string|
+Given('I have typed in the query: (.*)$') do |string|
   pending # Write code here that turns the phrase above into concrete actions
 end
 
