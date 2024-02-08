@@ -77,13 +77,6 @@ When('I send a query to the Prod Solr API with the params:') do |table|
   
   puts "**********"
   puts response.code
-  
-  
-  
-
-
-
-
 
 end
 
@@ -97,5 +90,9 @@ Then('the response should have seven rows') do
 end
 
 Then('the reponse should contain the search term {string}') do |string|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given('I have typed in the query: {string}) do |string|
   pending # Write code here that turns the phrase above into concrete actions
 end
