@@ -96,3 +96,7 @@ end
 Given('I have typed in the query: {string}') do |string|
   pending # Write code here that turns the phrase above into concrete actions
 end
+
+When('the Solr query is: {string}') do |string|
+  pending # Write code here that turns the phrase above into concrete actions
+end
