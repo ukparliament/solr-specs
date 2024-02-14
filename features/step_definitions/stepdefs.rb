@@ -22,12 +22,6 @@ When( 'I send a request for the Prod Solr API home page' ) do
   @response = Net::HTTP.get_response( URI.parse( url ) )
 end
 
-Then( 'the Prod Solr API should return an HTTP response of {string}' ) do |string|
-  
-  # We check the response code is 401.
-  expect( @response.code ).to eq string
-end
-
 When( 'I send a request for the Test Solr API home page' ) do
   
   # We set the URL for Test Solr.
@@ -36,20 +30,6 @@ When( 'I send a request for the Test Solr API home page' ) do
   # We get the response from Test Solr.
   @response = Net::HTTP.get_response( URI.parse( url ) )
 end
-
-Then( 'the Test Solr API should return an HTTP response of {string}' ) do |string|
-  
-  # We check the response code is 401.
-  expect( @response.code ).to eq string
-end
-
-
-
-
-# ### Written to here ###
-
-
-
 
 When('I send a query to the Prod Solr API with the params:') do |table|
   
@@ -69,17 +49,53 @@ When('I send a query to the Prod Solr API with the params:') do |table|
   request = Net::HTTP::Get.new( uri )
   
   # ... and append the API key.
-  request['Ocp-Apim-Subscription-Key'] = api_key 
+  request['Ocp-Apim-Subscription-Key'] = api_key
   
   # We get the response.
-  response = Net::HTTP.start( uri.hostname, uri.port, use_ssl: uri.scheme == 'https' ) { |http|
+  @response = Net::HTTP.start( uri.hostname, uri.port, use_ssl: uri.scheme == 'https' ) { |http|
     http.request( request )
   }
-  
-  puts "**********"
-  puts response.code
-
 end
+
+When('I send a query to the Test Solr API with the params:') do |table|
+  
+  # We get the API key for Test Solr.
+  api_key = ENV['API_KEY']
+  
+  # We extract the query string from the data table.
+  query_string = table.raw[0][1]
+  
+  # We construct the URL for Test Solr.
+  url = "https://api.parliament.uk/new-solr/select?q=#{query_string}"
+  
+  # We URIify the URL.
+  uri = URI( url )
+  
+  # We construct the request ...
+  request = Net::HTTP::Get.new( uri )
+  
+  # ... and append the API key.
+  request['Ocp-Apim-Subscription-Key'] = api_key
+  
+  # We get the response.
+  @response = Net::HTTP.start( uri.hostname, uri.port, use_ssl: uri.scheme == 'https' ) { |http|
+    http.request( request )
+  }
+end
+
+Then( 'the API should return an HTTP response code of {string}' ) do |string|
+  
+  # We check the response code.
+  expect( @response.code ).to eq string
+end
+
+
+
+
+
+
+
+
 
 Then('the HTTP response should be {int}') do |int|
 # Then('the HTTP response should be {float}') do |float|
