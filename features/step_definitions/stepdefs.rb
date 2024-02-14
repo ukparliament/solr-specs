@@ -1,5 +1,6 @@
 require 'net/http'
 
+
 Given( 'I can connect to the web' ) do
   
   # We use the ability to connect to Google as a proxy for the ability to connect to the web.
