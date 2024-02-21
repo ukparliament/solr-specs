@@ -14,16 +14,17 @@ Feature: Solr API expectations
   Scenario: Checking the Prod Solr API is giving results
     When I send a query to the Prod Solr API with the params:
         | q     | farming   |
-        | rows  | 7         |
-    Then the API should return an HTTP response code of '200'
-    And the response should have seven rows
-    And the response should contain the search term "farming"
+        | rows  | 12         |
+
+	Then the API should return an HTTP response code of '200'
+    And the response should have 12 rows
+    And the response should contain the search term 'farming'
 
   Scenario: Checking the Test Solr API is giving results
     When I send a query to the Test Solr API with the params:
         | q     | farming   |
-        | rows  | 7         |
+        | rows  | 12         |
     Then the API should return an HTTP response code of '200'
-    And the response should have seven rows
-    And the response should contain the search term "farming"
+    And the response should have 12 rows
+    And the response should contain the search term 'farming'
 
