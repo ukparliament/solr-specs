@@ -27,4 +27,16 @@ Feature: Solr API expectations
     Then the API should return an HTTP response code of '200'
     And the response should have 12 rows
     And the response should contain the search term 'farming'
+	
+  Scenario: Checking the Test and Production Solr APIs are returning the same number of results
+    When I send a query to the Test and Production Solr APIs with the params:
+      | q     | farming   |
+      | rows  | 12         |
+    Then the Test API should return an HTTP response code of '200'
+    And the Production API should return an HTTP response code of '200'
+    And the Test response should have 12 rows
+	And the Production response should have 12 rows
+    And the Test response should contain the search term 'farming'
+	And the Production response should contain the search term 'farming'
+	And the number of results returned by the Test response should equal the number of results returned by the Production response
 
