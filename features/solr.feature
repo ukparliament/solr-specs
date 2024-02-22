@@ -39,4 +39,5 @@ Feature: Solr API expectations
     And the Test response should contain the search term 'farming'
 	And the Production response should contain the search term 'farming'
 	And the number of results returned by the Test response should equal the number of results returned by the Production response
+	And result number 5 in the Test response should be the same as result number 5 in the Production response
 

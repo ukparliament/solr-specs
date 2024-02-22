@@ -167,6 +167,18 @@ And( 'the number of results returned by the Test response should equal the numbe
   expect( test_result_count ).to eq production_result_count
 end
 
+And( 'result number {int} in the Test response should be the same as result number {int} in the Production response') do |int, int2|
+  
+  # We get the URI of the document at position int from  Test Solr.
+  test_document_uri = get_uri_of_document_at_position_from_xml( @test_response.body, int )
+  
+  # We get the URI of the document at position int from  Production Solr.
+  production_document_uri = get_uri_of_document_at_position_from_xml( @production_response.body, int )
+  
+  # We check the document at position X in the Test response has the same URI as the document at position Y in the Production response.
+  expect( test_document_uri ).to eq production_document_uri
+end
+
 
 
 # A method to get the response of the Solr XML.
@@ -218,4 +230,13 @@ def get_result_count_from_xml( response_body )
   
   # We get the result count.
   doc.xpath( "response/result[@name='response']/@numFound" ).first.value.to_i
+end
+
+def get_uri_of_document_at_position_from_xml( response_body, position )
+  
+  # We get the Solr response body as XML.
+  doc  = Nokogiri::XML( response_body )
+  
+  # We get the URI of the document at the specified position.
+  doc.xpath( "response/result[@name='response']/doc[#{position}]/str[@name='uri']/text()" ).to_s.class
 end
