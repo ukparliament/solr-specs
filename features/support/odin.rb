@@ -8,7 +8,7 @@ module Odin
 		@io = config.out_stream
 		
 		config.on_event :test_case_finished do |event|
-			@io.puts 
+			@io.puts "–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––"
 
 			status = "UNKNOWN"
 		  	case event.result.class.to_s
