@@ -1,6 +1,9 @@
 html: 
-    --format progress 
     --format html 
+    --format summary
     --out=report.html
 default: 
+    --publish-quiet
+odin: 
+    --format Odin::Formatter
     --publish-quiet
