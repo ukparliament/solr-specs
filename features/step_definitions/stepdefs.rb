@@ -240,3 +240,4 @@ def get_uri_of_document_at_position_from_xml( response_body, position )
   # We get the URI of the document at the specified position.
   doc.xpath( "response/result[@name='response']/doc[#{position}]/str[@name='uri']/text()" ).to_s.class
 end
+
