@@ -1,6 +1,12 @@
 Feature: Solr API matching
   Exploring the differences between Test and Production Solr APIs
   
+  Scenario: Checking the Test and Production Solr APIs are returning the same number of results for a misspelled query
+    When I send a query to the Test and Production Solr APIs with the params:
+      | q     | brext   |
+      | rows  | 20         |
+	And the number of results returned by the Test response should equal the number of results returned by the Production response
+  
   Scenario: Checking the Test and Production Solr APIs are returning the same number of results for the query farming
     When I send a query to the Test and Production Solr APIs with the params:
       | q     | farming   |
