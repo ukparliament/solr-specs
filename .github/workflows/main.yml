@@ -23,7 +23,7 @@ jobs:
         run: sudo bundle install
 
       - name: cucumber
-        run: cucumber
+        run: cucumber API_KEY=${{ github.API_KEY }}
 
       #- name: cucumber --publish-quiet -f html > report.html
       #  run: cucumber --publish-quiet -f html > report.html
