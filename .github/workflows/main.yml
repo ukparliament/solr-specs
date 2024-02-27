@@ -22,8 +22,8 @@ jobs:
       - name: sudo bundle install
         run: sudo bundle install
 
-      - name: cucumber generate report.html
-        run: cucumber --profile odin API_KEY=${{ secrets.API_KEY }} > report.html
+      - name: cucumber
+        run: cucumber API_KEY=${{ secrets.API_KEY }}
 
      
             
