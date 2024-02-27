@@ -25,8 +25,10 @@ jobs:
       - name: cucumber generate report.html
         run: cucumber --profile html API_KEY=${{ secrets.API_KEY }} > report.html
 
-      - name: Git commit, pull & push action
+      - name: touch report.html
+        run: touch report.html
 
+      - name: Git commit, pull & push action
         uses: mgrybyk/git-commit-pull-push-action@v1.2.3
         with:
           # Local file path to the git repository. Defaults to the current directory '.'
