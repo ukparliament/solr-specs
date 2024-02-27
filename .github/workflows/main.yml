@@ -26,7 +26,7 @@ jobs:
         run: cucumber API_KEY=${{ secrets.API_KEY }} --publish-quiet -f html > report.html
 
       - name: copy report.html to _site directory
-        run: cp report.html report/index.html
+        run: cp report.html index.html report/
 
           
 
