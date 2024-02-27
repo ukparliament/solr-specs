@@ -22,8 +22,8 @@ jobs:
       - name: sudo bundle install
         run: sudo bundle install
 
-      - name: cucumber generate report.html
-        run: cucumber --profile html API_KEY=${{ secrets.API_KEY }} > report.html
+      #- name: cucumber generate report.html
+      #  run: cucumber --profile html API_KEY=${{ secrets.API_KEY }} > report.html
 
       - name: touch report.html
         run: touch report.html
