@@ -22,11 +22,17 @@ jobs:
       - name: sudo bundle install
         run: sudo bundle install
 
-      - name: cucumber
-        run: cucumber API_KEY=${{ secrets.API_KEY }}
+      #- name: cucumber
+      #  run: cucumber API_KEY=${{ secrets.API_KEY }}
 
-      #- name: cucumber --publish-quiet -f html > report.html
-      #  run: cucumber --publish-quiet -f html > report.html
+      - name: cucumber generate report.html
+        run: cucumber API_KEY=${{ secrets.API_KEY }} --publish-quiet -f html > _site/report.html
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3.0.1
+          
+
+      
 
           
 
