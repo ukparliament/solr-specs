@@ -232,6 +232,7 @@ def get_result_count_from_xml( response_body )
   doc.xpath( "response/result[@name='response']/@numFound" ).first.value.to_i
 end
 
+# ## A method to get the URI of a document at a position in the response body of the Solr XML.
 def get_uri_of_document_at_position_from_xml( response_body, position )
   
   # We get the Solr response body as XML.
