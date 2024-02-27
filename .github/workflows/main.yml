@@ -22,14 +22,11 @@ jobs:
       - name: sudo bundle install
         run: sudo bundle install
 
-      #- name: cucumber
-      #  run: cucumber API_KEY=${{ secrets.API_KEY }}
-
       - name: cucumber generate report.html
         run: cucumber API_KEY=${{ secrets.API_KEY }} --publish-quiet -f html > report.html
 
       - name: copy report.html to _site directory
-        run: cp report.html _site/report.html
+        run: cp report.html index.html report/
 
           
 
