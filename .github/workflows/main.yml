@@ -13,9 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
 
-      - name: test var print
-        run: echo "${{ secrets.API_KEY }}"
-
       - name: install ruby
         run: sudo apt-get install ruby-full
 
@@ -26,7 +23,7 @@ jobs:
         run: sudo bundle install
 
       - name: cucumber
-        run: cucumber API_KEY=${{ github.API_KEY }}
+        run: cucumber API_KEY=${{ secrets.API_KEY }}
 
       #- name: cucumber --publish-quiet -f html > report.html
       #  run: cucumber --publish-quiet -f html > report.html
