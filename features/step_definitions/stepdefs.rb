@@ -179,6 +179,13 @@ And( 'result number {int} in the Test response should be the same as result numb
   expect( test_document_uri ).to eq production_document_uri
 end
 
+When('result number {int} in the Test response should have the same {string} as result number {int} in the Production response') do |int, string, int2|
+# When('result number {int} in the Test response should have the same {string} as result number {float} in the Production response') do |int, string, float|
+# When('result number {float} in the Test response should have the same {string} as result number {int} in the Production response') do |float, string, int|
+# When('result number {float} in the Test response should have the same {string} as result number {float} in the Production response') do |float, string, float2|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
 
 
 # A method to get the response of the Solr XML.
