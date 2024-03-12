@@ -155,7 +155,7 @@ And( 'the Production response should contain the search term {string}' ) do |str
   expect( query_string ).to eq string
 end
 
-And( 'the number of results returned by the Test response should equal the number of results returned by the Production response' ) do
+Then( 'the number of results returned by the Test response should equal the number of results returned by the Production response' ) do
   
   # We get the number of results returned by Test Solr.
   test_result_count = get_result_count_from_xml( @test_response.body )
