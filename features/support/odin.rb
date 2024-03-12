@@ -1,4 +1,4 @@
-
+# add pending results
 
 module Odin
 	
@@ -40,6 +40,8 @@ module Odin
 			  status = "\e[1mFAILED\e[22m"
 			when "Cucumber::Core::Test::Result::Skipped"
 			  status = "\e[3mSkipped\e[23m"
+			when "Cucumber::Core::Test::Result::Undefined"
+			  status = "\e[3mUNDEFINED\e[23m"
 			else
 			  status = event.result.class.to_s
 			end
