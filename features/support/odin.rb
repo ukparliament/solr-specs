@@ -7,10 +7,14 @@ module Odin
 	  def initialize(config)
 		@io = config.out_stream
 		
+		config.on_event :test_case_started do |event|
+      @io.puts "–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––"
+      @io.puts "Scenario: #{event.test_case.name}"
+    end
+		
 		config.on_event :test_case_finished do |event|
-			@io.puts "–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––"
-
-			status = "UNKNOWN"
+      
+      status = "UNKNOWN"
 		  	case event.result.class.to_s
 			when "Cucumber::Core::Test::Result::Passed"
 			  status = "Passed"
@@ -22,7 +26,8 @@ module Odin
 			  status = event.result.class.to_s
 			end
 			
-			@io.puts "#{status}\t#{event.test_case.name}"
+			@io.puts "Scenario #{status}"
+			@io.puts "–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––"
 		end
 		
 		config.on_event :test_step_finished do |event|
