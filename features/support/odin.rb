@@ -1,5 +1,3 @@
-# add pending results
-
 module Odin
 	
 	class Formatter
@@ -8,8 +6,8 @@ module Odin
 		@io = config.out_stream
 		
 		config.on_event :test_case_started do |event|
-      @io.puts "–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––"
-      @io.puts "Scenario: #{event.test_case.name}"
+      @io.puts "\n"
+      @io.puts "[Scenario] #{event.test_case.name}"
     end
 		
 		config.on_event :test_case_finished do |event|
@@ -27,7 +25,7 @@ module Odin
 			end
 			
 			@io.puts "Scenario #{status}"
-			@io.puts "–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––"
+			@io.puts "\n–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––"
 		end
 		
 		config.on_event :test_step_finished do |event|
@@ -41,12 +39,12 @@ module Odin
 			when "Cucumber::Core::Test::Result::Skipped"
 			  status = "\e[3mSkipped\e[23m"
 			when "Cucumber::Core::Test::Result::Undefined"
-			  status = "Pending"
+			  status = "(Pending)"
 			else
 			  status = event.result.class.to_s
 			end
 			
-			@io.puts "\t#{status}\t#{event.test_step}"
+			@io.puts "\t#{status}: #{event.test_step}"
 		end
 		
 	  end
