@@ -24,7 +24,7 @@ module Odin
 			  status = event.result.class.to_s
 			end
 			
-			@io.puts "Scenario #{status}"
+			@io.puts "Scenario #{status} at #{event.test_case.location}"
 			@io.puts "\n–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––"
 		end
 		
