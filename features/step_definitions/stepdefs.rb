@@ -169,22 +169,31 @@ end
 
 And( 'result number {int} in the Test response should be the same as result number {int} in the Production response') do |int, int2|
   
-  # We get the URI of the document at position int from  Test Solr.
+  # We get the URI of the document at position int from Test Solr.
   test_document_uri = get_uri_of_document_at_position_from_xml( @test_response.body, int )
   
-  # We get the URI of the document at position int from  Production Solr.
+  # We get the URI of the document at position int from Production Solr.
   production_document_uri = get_uri_of_document_at_position_from_xml( @production_response.body, int )
   
   # We check the document at position X in the Test response has the same URI as the document at position Y in the Production response.
   expect( test_document_uri ).to eq production_document_uri
 end
 
-When('result number {int} in the Test response should have the same {string} as result number {int} in the Production response') do |int, string, int2|
-# When('result number {int} in the Test response should have the same {string} as result number {float} in the Production response') do |int, string, float|
-# When('result number {float} in the Test response should have the same {string} as result number {int} in the Production response') do |float, string, int|
-# When('result number {float} in the Test response should have the same {string} as result number {float} in the Production response') do |float, string, float2|
-  pending # Write code here that turns the phrase above into concrete actions
+And( 'result number {int} in the Test response should have the same text snippet as result number {int} in the Production response') do |int, int2|
+  
+  # We get the text snippet of the document at position int from Test Solr.
+  test_document_text_snippet = get_text_snippet_of_document_at_position_from_xml( @test_response.body, int )
+  
+  # We get the text snippet of the document at position int from Production Solr.
+  production_document_text_snippet = get_text_snippet_of_document_at_position_from_xml( @production_response.body, int )
+  
+  # We check the document at position X in the Test response has the same text snippet as the document at position Y in the Production response.
+  expect( test_document_text_snippet ).to eq production_document_text_snippet
+  
 end
+
+
+
 
 
 
@@ -246,6 +255,16 @@ def get_uri_of_document_at_position_from_xml( response_body, position )
   doc  = Nokogiri::XML( response_body )
   
   # We get the URI of the document at the specified position.
-  doc.xpath( "response/result[@name='response']/doc[#{position}]/str[@name='uri']/text()" ).to_s.class
+  doc.xpath( "response/result[@name='response']/doc[#{position}]/str[@name='uri']/text()" ).to_s
+end
+
+# ## A method to get the text snippet of a document at a position in the response body of the Solr XML.
+def get_text_snippet_of_document_at_position_from_xml( response_body, position )
+  
+  # We get the Solr response body as XML.
+  doc  = Nokogiri::XML( response_body )
+  
+  # We get the URI of the document at the specified position.
+  doc.xpath( "response/result[@name='response']/doc[#{position}]/str[@name='abstract_t']/text()" ).to_s
 end
 
