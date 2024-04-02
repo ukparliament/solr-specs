@@ -1,0 +1,21 @@
+Solr API matching
+  for the query farming [31m✗[0m
+  for a time bound query for minister's [31m✗[0m
+  misspelled brexit query [31m✗[0m
+  time limited query of oaths [31m✗[0m
+
+Solr API setup
+  Checking the Prod Solr API is accessible [32m✓[0m
+  Checking the Test Solr API is accessible [32m✓[0m
+  Checking the Prod Solr API is giving results [32m✓[0m
+  Checking the Test Solr API is giving results [32m✓[0m
+
+[31mFailing Scenarios:[0m
+[31mcucumber -p html features/matching.feature:9[0m[90m # Scenario: for the query farming[0m
+[31mcucumber -p html features/matching.feature:17[0m[90m # Scenario: for a time bound query for minister's[0m
+[31mcucumber -p html features/matching.feature:25[0m[90m # Scenario: misspelled brexit query[0m
+[31mcucumber -p html features/matching.feature:33[0m[90m # Scenario: time limited query of oaths[0m
+
+8 scenarios ([31m4 failed[0m, [32m4 passed[0m)
+30 steps ([31m4 failed[0m, [36m4 skipped[0m, [33m4 undefined[0m, [32m18 passed[0m)
+0m4.351s
