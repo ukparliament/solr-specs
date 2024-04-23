@@ -22,8 +22,8 @@ jobs:
       - name: sudo bundle install
         run: sudo bundle install
 
-      - name: cucumber
-        run: cucumber API_KEY=${{ secrets.API_KEY }}
+      - name: cucumber --publish
+        run: cucumber API_KEY=${{ secrets.API_KEY }} --publish
 
      
             
