@@ -12,9 +12,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4.1.1
-
+        with:
+          bundler-cache: true
+        
       - name: install ruby
         run: sudo apt-get install ruby-full
+        env:
+          CUCUMBER_PUBLISH_TOKEN: ${{ secrets.CUCUMBER_PUBLISH_TOKEN }}
 
       - name: install bundler
         run: sudo gem install bundler
@@ -24,10 +28,7 @@ jobs:
 
       - name: cucumber --publish
         run: cucumber API_KEY=${{ secrets.API_KEY }} --publish
-        env:
-          CUCUMBER_PUBLISH_TOKEN: ${{ secrets.CUCUMBER_PUBLISH_TOKEN }}
         
-
      
             
 
