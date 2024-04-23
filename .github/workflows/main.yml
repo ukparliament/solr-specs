@@ -11,9 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4.1.1
-        with:
-          bundler-cache: true
+      - uses: actions/checkout@v4.1.3
         
       - name: install ruby
         run: sudo apt-get install ruby-full
