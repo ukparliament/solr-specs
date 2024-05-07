@@ -23,9 +23,7 @@ jobs:
         run: sudo bundle install
 
       - name: cucumber --publish
-        env:
-          CUCUMBER_PUBLISH_TOKEN: ${{ secrets.CUCUMBER_PUBLISH_TOKEN }}
-        run: cucumber API_KEY=${{ secrets.API_KEY }} --publish
+        run: CUCUMBER_PUBLISH_TOKEN=${{ secrets.CUCUMBER_PUBLISH_TOKEN }} cucumber API_KEY=${{ secrets.API_KEY }} --publish
         
      
             
