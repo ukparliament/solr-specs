@@ -1,8 +1,8 @@
 require 'net/http'
 require 'nokogiri'
 
-TEST_SOLR_URL = 'https://api.parliament.uk/new-solr-test-punctuation/'
-PRODUCTION_SOLR_URL = 'https://api.parliament.uk/solr/'
+PRODUCTION_SOLR_URL = 'https://api.parliament.uk/solr'
+TEST_SOLR_URL = 'https://api.parliament.uk/new-solr-test-punctuation/select?wt=xml'
 
 
 Given( 'I can connect to the web' ) do
@@ -59,7 +59,7 @@ When('I send a query to the Test Solr API with the params:') do |table|
   row_count = table.raw[1][1]
   
   # We construct the URL for Test Solr.
-  url = "#{TEST_SOLR_URL}?q=#{query_string}&rows=#{row_count}&wt=xml"
+  url = "#{TEST_SOLR_URL}&q=#{query_string}&rows=#{row_count}"
   
   # We get the response from the Solr XML.
   @response = get_response( url )
@@ -74,7 +74,7 @@ When('I send a query to the Test and Production Solr APIs with the params:') do 
   row_count = table.raw[1][1]
   
   # We construct the URL for Test Solr.
-  test_url = "#{TEST_SOLR_URL}?q=#{query_string}&rows=#{row_count}&wt=xml"
+  test_url = "#{TEST_SOLR_URL}&q=#{query_string}&rows=#{row_count}"
   
   # We get the response from the Test Solr XML.
   @test_response = get_response( test_url )
@@ -85,6 +85,10 @@ When('I send a query to the Test and Production Solr APIs with the params:') do 
   # We get the response from the Production Solr XML.
   @production_response = get_response( production_url )
 end
+
+
+
+
 
 Then( 'the API should return an HTTP response code of {string}' ) do |string|
   
@@ -270,4 +274,3 @@ def get_text_snippet_of_document_at_position_from_xml( response_body, position )
   # We get the URI of the document at the specified position.
   doc.xpath( "response/result[@name='response']/doc[#{position}]/str[@name='abstract_t']/text()" ).to_s
 end
-
