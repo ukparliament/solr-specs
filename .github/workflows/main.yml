@@ -15,9 +15,7 @@ jobs:
         
       - name: install ruby
         run: sudo apt-get install ruby-full
-        env:
-          CUCUMBER_PUBLISH_TOKEN: ${{ secrets.CUCUMBER_PUBLISH_TOKEN }}
-
+        
       - name: install bundler
         run: sudo gem install bundler
 
@@ -25,6 +23,8 @@ jobs:
         run: sudo bundle install
 
       - name: cucumber --publish
+        env:
+          CUCUMBER_PUBLISH_TOKEN: ${{ secrets.CUCUMBER_PUBLISH_TOKEN }}
         run: cucumber API_KEY=${{ secrets.API_KEY }} --publish
         
      
