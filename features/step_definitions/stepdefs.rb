@@ -86,10 +86,6 @@ When('I send a query to the Test and Production Solr APIs with the params:') do 
   @production_response = get_response( production_url )
 end
 
-
-
-
-
 Then( 'the API should return an HTTP response code of {string}' ) do |string|
   
   # We check the response code.
