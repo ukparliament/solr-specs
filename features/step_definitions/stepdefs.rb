@@ -1,8 +1,8 @@
 require 'net/http'
 require 'nokogiri'
 
-PRODUCTION_SOLR_URL = 'https://api.parliament.uk/solr'
-TEST_SOLR_URL = 'https://api.parliament.uk/new-solr-test-punctuation/select?wt=xml'
+PRODUCTION_SOLR_URL = 'https://api.parliament.uk/solr?sort=timestamp%20desc'
+TEST_SOLR_URL = 'https://api.parliament.uk/new-solr-test-punctuation/select?wt=xml&sort=timestamp%20desc'
 
 
 Given( 'I can connect to the web' ) do
@@ -44,7 +44,7 @@ When('I send a query to the Prod Solr API with the params:') do |table|
   row_count = table.raw[1][1]
   
   # We construct the URL for Production Solr.
-  url = "#{PRODUCTION_SOLR_URL}?q=#{query_string}&rows=#{row_count}&sort=date"
+  url = "#{PRODUCTION_SOLR_URL}&q=#{query_string}&rows=#{row_count}"
   
   # We get the response from the Solr XML.
   @response = get_response( url )
@@ -59,7 +59,7 @@ When('I send a query to the Test Solr API with the params:') do |table|
   row_count = table.raw[1][1]
   
   # We construct the URL for Test Solr.
-  url = "#{TEST_SOLR_URL}&q=#{query_string}&rows=#{row_count}&sort=date"
+  url = "#{TEST_SOLR_URL}&q=#{query_string}&rows=#{row_count}"
   
   # We get the response from the Solr XML.
   @response = get_response( url )
@@ -74,13 +74,13 @@ When('I send a query to the Test and Production Solr APIs with the params:') do 
   row_count = table.raw[1][1]
   
   # We construct the URL for Test Solr.
-  test_url = "#{TEST_SOLR_URL}&q=#{query_string}&rows=#{row_count}&sort=date"
+  test_url = "#{TEST_SOLR_URL}&q=#{query_string}&rows=#{row_count}"
   
   # We get the response from the Test Solr XML.
   @test_response = get_response( test_url )
   
   # We construct the URL for Production Solr.
-  production_url = "#{PRODUCTION_SOLR_URL}?q=#{query_string}&rows=#{row_count}&sort=date"
+  production_url = "#{PRODUCTION_SOLR_URL}&q=#{query_string}&rows=#{row_count}"
   
   # We get the response from the Production Solr XML.
   @production_response = get_response( production_url )
