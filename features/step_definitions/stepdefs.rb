@@ -1,8 +1,8 @@
 require 'net/http'
 require 'nokogiri'
 
-PRODUCTION_SOLR_URL = 'https://api.parliament.uk/solr?sort=timestamp%20desc'
-TEST_SOLR_URL = 'https://api.parliament.uk/new-solr-test-punctuation/select?wt=xml&sort=timestamp%20desc'
+PRODUCTION_SOLR_URL = 'https://api.parliament.uk/solr?sort=date_dt%20desc'
+TEST_SOLR_URL = 'https://api.parliament.uk/new-solr-test-punctuation/select?wt=xml&sort=date_dt%20desc'
 
 
 Given( 'I can connect to the web' ) do
