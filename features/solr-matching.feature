@@ -50,6 +50,24 @@ Feature: Solr API matching
  	And result number 2 in the Test response should have the same text snippet as result number 2 in the Production response
     # expected to pass
 
+  Scenario: for the query subject:beef date:01/01/2021..31/12/2021
+    When I send a query to the Test and Production Solr APIs with the params:
+      | q     | (subject_t:Beef OR subject_ses:8600 OR topic_ses:8600) AND date_dt:[2021-01-01T00:00:00.000Z TO 2021-12-31T23:59:59.999Z]   |
+      | rows  | 100          |
+	Then the number of results returned by the Test response should equal the number of results returned by the Production response
+	And result number 5 in the Test response should be the same as result number 5 in the Production response
+ 	And result number 5 in the Test response should have the same text snippet as result number 5 in the Production response
+    # expected to pass
+
+  Scenario: for the query type:edm date:01/05/2021..31/05/2021
+    When I send a query to the Test and Production Solr APIs with the params:
+      | q     | type_sesrollup:90996^0 AND date_dt:[2021-04-30T23:00:00.000Z TO 2021-05-31T22:59:59.999Z]   |
+      | rows  | 100          |
+	Then the number of results returned by the Test response should equal the number of results returned by the Production response
+	And result number 5 in the Test response should be the same as result number 5 in the Production response
+ 	And result number 5 in the Test response should have the same text snippet as result number 5 in the Production response
+    # expected to pass
+
 #  Scenario: for the query farming
 #    When I send a query to the Test and Production Solr APIs with the params:
 #      | q     | farming   |
